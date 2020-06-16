@@ -3,8 +3,9 @@
 ## Features
   1. Fill a new form
   2. View all filled records
-  3. Edit or delete any record
-  4. View any form filled and print a pdf copy of it
+  3. Search for an entry by id
+  4. Edit or delete any record
+  5. View any form filled and print a pdf copy of it
 ## Tools used
   1. MongoDB
   2. NodeJS
