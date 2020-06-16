@@ -1,0 +1,282 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+  <title>Employee Appraisal</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/ngProgress.css">
+<link rel="stylesheet" href="css/toaster.css">
+<link rel="stylesheet" href="css/main.css">
+<style>
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
+</style>
+</head>
+<body ng-cloak>
+  <header>
+    <div class = "container special-padding">
+      <div class="col-md-7 center-block">
+        <h1 class="center-block head">Employee Appraisal Form</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-form" ng-controller="EmpCtrl">
+    <div class="text-center">
+      <button class="btn btn-primary btn-header" ng-click="ShowFill()">Fill up form</button>
+      <button class="btn btn-primary btn-header" ng-click="ShowResult()">View Form Replies</button>
+    </div>
+    
+    <!--Fill form Part-->
+    <div ng-show='fillCtrl'>
+    <h2>Fill up Appraisal Form</h2><br>
+    <h4>Employee Details</h4>
+    <form name="Appraisal" novalidate>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Employee Id</th>
+          <th>Department</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><input class="form-control" ng-model="emp.name" required="true" placeholder="Employee Name"></td>
+          <td><input class="form-control" ng-model="emp.emp_id" placeholder="Employee Id"></td>
+          <td><input class="form-control" ng-model="emp.department" placeholder="Department"></td>
+        </tr>
+      </tbody>
+    </table>
+    <br><h4>Manager Details</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Manager Name</th>
+          <th>Manager ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input class="form-control" ng-model="emp.mname" required="" placeholder="Manager Name"></td>
+          <td><input class="form-control" ng-model="emp.man_id" placeholder="Manager Id"></td>
+        </tr>
+      </tbody>
+    </table>
+    <br><h4>Performance Review</h4>
+    <p> Please Indicate the degree to which you agree or disagree with the following statements about the employee</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Criteria</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Open to New Ideas or Suggestions</td>
+          <td class="preference">
+            <input type="radio" name="q1" ng-model="emp.q1" value="1"> Strongly Disagree
+            <input type="radio" name="q1" ng-model="emp.q1" value="2"> Disagree
+            <input type="radio" name="q1" ng-model="emp.q1" value="3"> Neutral
+            <input type="radio" name="q1" ng-model="emp.q1" value="4"> Agree
+            <input type="radio" name="q1" ng-model="emp.q1" value="5"> Strongly Agree
+          </td>
+        </tr>
+        <tr>   
+          <td>Manages employee conflict in a professional manner</td>
+          <td class="preference">
+            <input type="radio" name="q2" ng-model="emp.q2" value="1"> Strongly Disagree
+            <input type="radio" name="q2" ng-model="emp.q2" value="2"> Disagree
+            <input type="radio" name="q2" ng-model="emp.q2" value="3"> Neutral
+            <input type="radio" name="q2" ng-model="emp.q2" value="4"> Agree
+            <input type="radio" name="q2" ng-model="emp.q2" value="5"> Strongly Agree
+          </td>
+        </tr>
+        <tr>
+          <td>Makes a concerted effort to make team members feel comfortable</td>
+          <td class="preference">
+            <input type="radio" name="q3" ng-model="emp.q3" value="1"> Strongly Disagree
+            <input type="radio" name="q3" ng-model="emp.q3" value="2"> Disagree
+            <input type="radio" name="q3" ng-model="emp.q3" value="3"> Neutral
+            <input type="radio" name="q3" ng-model="emp.q3" value="4"> Agree
+            <input type="radio" name="q3" ng-model="emp.q3" value="5"> Strongly Agree
+          </td>
+        </td>
+        <tr>
+          <td>Consistently makes sure their team is up to speed with company policies and procedures</td>
+          <td class="preference">
+            <input type="radio" name="q4" ng-model="emp.q4" value="1"> Strongly Disagree
+            <input type="radio" name="q4" ng-model="emp.q4" value="2"> Disagree
+            <input type="radio" name="q4" ng-model="emp.q4" value="3"> Neutral
+            <input type="radio" name="q4" ng-model="emp.q4" value="4"> Agree
+            <input type="radio" name="q4" ng-model="emp.q4" value="5"> Strongly Agree
+          </td>
+        </tr>
+        <tr>
+          <td>Handles multiple projects seamlessly</td>
+          <td class="preference">
+            <input type="radio" name="q5" ng-model="emp.q5" value="1"> Strongly Disagree
+            <input type="radio" name="q5" ng-model="emp.q5" value="2"> Disagree
+            <input type="radio" name="q5" ng-model="emp.q5" value="3"> Neutral
+            <input type="radio" name="q5" ng-model="emp.q5" value="4"> Agree
+            <input type="radio" name="q5" ng-model="emp.q5" value="5"> Strongly Agree
+          </td>
+
+        </tr>
+        <tr>
+          <td>Overall Perfomance</td>
+          <td class="preference">
+            <input type="radio" name="q6" ng-model="emp.q6" value="1"> Strongly Disagree
+            <input type="radio" name="q6" ng-model="emp.q6" value="2"> Disagree
+            <input type="radio" name="q6" ng-model="emp.q6" value="3"> Neutral
+            <input type="radio" name="q6" ng-model="emp.q6" value="4"> Agree
+            <input type="radio" name="q6" ng-model="emp.q6" value="5"> Strongly Agree
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+    <br><h4>Additional Remarks</h4>
+    <div>
+      <textarea name="remarks" rows="6" class="remark" placeholder="Enter Remarks" ng-model="emp.remark"></textarea>
+    </div><br>
+    <div class = "text-center">
+    <button class="btn btn-primary" ng-click="add(emp)" ng-if="!emp._id" type="submit" ng-disabled="!Appraisal.$valid">Submit Form</button>
+            <div class="btn-group">
+              <button class="btn btn-info" ng-click="update(emp)" ng-if="emp._id" type="submit">Update</button>
+              <button class="btn" ng-click="deselect()" ng-if="emp._id">Clear</button>
+            </div>
+    </div>
+    </form>
+    </div>
+
+
+    <!--View Form Part-->
+    <div ng-show='viewCtrl'>
+    <h2>Appraisal Form</h2><br>
+    <h4>Employee Details</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Employee Id</th>
+          <th>Department</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>{{emp.name}}</td>
+          <td>{{emp.emp_id}}</td>
+          <td>{{emp.department}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br><h4>Manager Details</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Manager Name</th>
+          <th>Manager ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{emp.mname}}</td>
+          <td>{{emp.man_id}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br><h4>Performance Review</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Criteria</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Open to New Ideas or Suggestions</td>
+          <td>{{emp.q1}}/5</td>
+        </tr>
+        <tr>   
+          <td>Manages employee conflict in a professional manner</td>
+          <td>{{emp.q2}}/5</td>
+          
+        </tr>
+        <tr>
+          <td>Makes a concerted effort to make team members feel comfortable</td>
+          <td>{{emp.q3}}/5</td>
+        </td>
+        <tr>
+          <td>Consistently makes sure their team is up to speed with company policies and procedures</td>
+          <td>{{emp.q4}}/5</td>
+        </tr>
+        <tr>
+          <td>Handles multiple projects seamlessly</td>
+          <td>{{emp.q5}}/5</td>
+
+        </tr>
+        <tr>
+          <td>Overall Perfomance</td>
+          <td>{{emp.q6}}/5</td>
+        </tr>
+      </tbody>
+    </table>
+    <br><h4>Additional Remarks</h4>
+    <div>
+      <p>{{emp.remark}}</p>
+    </div><br>
+    </div>
+
+    <!--View All Results Part-->
+    <div ng-show='resultCtrl'>
+    <h2>View Results</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Employee Id</th>
+          <th>Department</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="emp in emps">
+          <td>{{emp.name}}</td>
+          <td>{{emp.emp_id}}</td>
+          <td>{{emp.department}}</td>
+          <td>
+            <button class="btn btn-primary" ng-click="view(emp._id)" >View</button>
+            <div class="btn-group">
+              <button class="btn btn-danger" ng-click="remove(emp)">Remove</button>
+              <button class="btn btn-warning" ng-click="edit(emp._id)">Edit</button>
+            </div>
+              
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+  </div>
+
+<div data-loading></div>
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/ngProgress.min.js"></script>
+<script src="js/toaster.js"></script>
+<script src="app/app.js"></script>
+<script src="app/products.js"></script>
+<script src="app/employees.js"></script>
+</body>
+</html>
