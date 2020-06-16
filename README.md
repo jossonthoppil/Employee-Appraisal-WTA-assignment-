@@ -12,7 +12,7 @@
   4. AngularJS
 ## How to Run
   In the directory run the following commands:
-  `npm install`
-  `npm start`
+  -`npm install`
+  -`npm start`
   Website runs at localhost:8080
   
