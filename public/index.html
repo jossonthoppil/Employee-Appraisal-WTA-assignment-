@@ -48,9 +48,9 @@ display: none !important;
       <tbody>
         
         <tr>
-          <td><input class="form-control" ng-model="emp.name" required="true" placeholder="Employee Name"></td>
-          <td><input class="form-control" ng-model="emp.emp_id" required="true" placeholder="Employee Id"></td>
-          <td><input class="form-control" ng-model="emp.department" required="true" placeholder="Department"></td>
+          <td><input class="form-control" ng-model="emp.name" required="" placeholder="Employee Name"></td>
+          <td><input class="form-control" ng-model="emp.emp_id" required="" placeholder="Employee Id"></td>
+          <td><input class="form-control" ng-model="emp.department" required="" placeholder="Department"></td>
         </tr>
       </tbody>
     </table>
@@ -64,8 +64,8 @@ display: none !important;
       </thead>
       <tbody>
         <tr>
-          <td><input class="form-control" ng-model="emp.mname" required="true" placeholder="Manager Name"></td>
-          <td><input class="form-control" ng-model="emp.man_id" required="true" placeholder="Manager Id"></td>
+          <td><input class="form-control" ng-model="emp.mname" required="" placeholder="Manager Name"></td>
+          <td><input class="form-control" ng-model="emp.man_id" required="" placeholder="Manager Id"></td>
         </tr>
       </tbody>
     </table>
@@ -319,6 +319,7 @@ display: none !important;
     <!--View All Results Part-->
     <div ng-show='resultCtrl'>
     <h2>View Results</h2>
+    <input class="form-control" type="text" ng-model="searchinput" placeholder="Search by Id">
     <table class="table">
       <thead>
         <tr>
@@ -329,7 +330,7 @@ display: none !important;
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="emp in emps">
+        <tr ng-repeat="emp in emps | filter:{ emp_id: searchinput}">
           <td>{{emp.name}}</td>
           <td>{{emp.emp_id}}</td>
           <td>{{emp.department}}</td>
@@ -339,12 +340,10 @@ display: none !important;
               <button class="btn btn-danger" ng-click="remove(emp)">Remove</button>
               <button class="btn btn-warning" ng-click="edit(emp._id)">Edit</button>
             </div>
-              
-
           </td>
         </tr>
       </tbody>
-    </table>
+    </table><p ng-hide="emps.length">No Records to Show</p><br><br><br>
     </div>
 
   </div>
