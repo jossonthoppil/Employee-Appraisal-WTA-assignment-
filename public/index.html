@@ -12,7 +12,7 @@ display: none !important;
 }
 </style>
 </head>
-<body ng-cloak>
+<body ng-style="{'background-image':'url(background.jpg)'}" ng-cloak>
   <header>
     <div class = "container special-padding">
       <div class="col-md-7 center-block">
@@ -21,7 +21,7 @@ display: none !important;
     </div>
   </header>
 
-  <div class="container main-form" ng-controller="EmpCtrl">
+  <div class="container bg main-form" style="background-color: #ffffff;" ng-controller="EmpCtrl">
     <div class="text-center">
       <button class="btn btn-primary btn-header" ng-click="ShowFill()">Fill up form</button>
       <button class="btn btn-primary btn-header" ng-click="ShowResult()">View Form Replies</button>
@@ -38,15 +38,15 @@ display: none !important;
           <th>Name</th>
           <th>Employee Id</th>
           <th>Department</th>
-          <th>&nbsp;</th>
+          <!--<th>&nbsp;</th>-->
         </tr>
       </thead>
       <tbody>
         
         <tr>
           <td><input class="form-control" ng-model="emp.name" required="true" placeholder="Employee Name"></td>
-          <td><input class="form-control" ng-model="emp.emp_id" placeholder="Employee Id"></td>
-          <td><input class="form-control" ng-model="emp.department" placeholder="Department"></td>
+          <td><input class="form-control" ng-model="emp.emp_id" required="true" placeholder="Employee Id"></td>
+          <td><input class="form-control" ng-model="emp.department" required="true" placeholder="Department"></td>
         </tr>
       </tbody>
     </table>
@@ -60,8 +60,8 @@ display: none !important;
       </thead>
       <tbody>
         <tr>
-          <td><input class="form-control" ng-model="emp.mname" required="" placeholder="Manager Name"></td>
-          <td><input class="form-control" ng-model="emp.man_id" placeholder="Manager Id"></td>
+          <td><input class="form-control" ng-model="emp.mname" required="true" placeholder="Manager Name"></td>
+          <td><input class="form-control" ng-model="emp.man_id" required="true" placeholder="Manager Id"></td>
         </tr>
       </tbody>
     </table>
@@ -78,7 +78,7 @@ display: none !important;
         <tr>
           <td>Open to New Ideas or Suggestions</td>
           <td class="preference">
-            <input type="radio" name="q1" ng-model="emp.q1" value="1"> Strongly Disagree
+            <input type="radio" name="q1" ng-model="emp.q1" value="1" required=""> Strongly Disagree
             <input type="radio" name="q1" ng-model="emp.q1" value="2"> Disagree
             <input type="radio" name="q1" ng-model="emp.q1" value="3"> Neutral
             <input type="radio" name="q1" ng-model="emp.q1" value="4"> Agree
@@ -88,7 +88,7 @@ display: none !important;
         <tr>   
           <td>Manages employee conflict in a professional manner</td>
           <td class="preference">
-            <input type="radio" name="q2" ng-model="emp.q2" value="1"> Strongly Disagree
+            <input type="radio" name="q2" ng-model="emp.q2" value="1" required=""> Strongly Disagree
             <input type="radio" name="q2" ng-model="emp.q2" value="2"> Disagree
             <input type="radio" name="q2" ng-model="emp.q2" value="3"> Neutral
             <input type="radio" name="q2" ng-model="emp.q2" value="4"> Agree
@@ -98,7 +98,7 @@ display: none !important;
         <tr>
           <td>Makes a concerted effort to make team members feel comfortable</td>
           <td class="preference">
-            <input type="radio" name="q3" ng-model="emp.q3" value="1"> Strongly Disagree
+            <input type="radio" name="q3" ng-model="emp.q3" value="1" required=""> Strongly Disagree
             <input type="radio" name="q3" ng-model="emp.q3" value="2"> Disagree
             <input type="radio" name="q3" ng-model="emp.q3" value="3"> Neutral
             <input type="radio" name="q3" ng-model="emp.q3" value="4"> Agree
@@ -108,7 +108,7 @@ display: none !important;
         <tr>
           <td>Consistently makes sure their team is up to speed with company policies and procedures</td>
           <td class="preference">
-            <input type="radio" name="q4" ng-model="emp.q4" value="1"> Strongly Disagree
+            <input type="radio" name="q4" ng-model="emp.q4" value="1" required=""> Strongly Disagree
             <input type="radio" name="q4" ng-model="emp.q4" value="2"> Disagree
             <input type="radio" name="q4" ng-model="emp.q4" value="3"> Neutral
             <input type="radio" name="q4" ng-model="emp.q4" value="4"> Agree
@@ -118,7 +118,7 @@ display: none !important;
         <tr>
           <td>Handles multiple projects seamlessly</td>
           <td class="preference">
-            <input type="radio" name="q5" ng-model="emp.q5" value="1"> Strongly Disagree
+            <input type="radio" name="q5" ng-model="emp.q5" value="1" required=""> Strongly Disagree
             <input type="radio" name="q5" ng-model="emp.q5" value="2"> Disagree
             <input type="radio" name="q5" ng-model="emp.q5" value="3"> Neutral
             <input type="radio" name="q5" ng-model="emp.q5" value="4"> Agree
@@ -129,7 +129,7 @@ display: none !important;
         <tr>
           <td>Overall Perfomance</td>
           <td class="preference">
-            <input type="radio" name="q6" ng-model="emp.q6" value="1"> Strongly Disagree
+            <input type="radio" name="q6" ng-model="emp.q6" value="1" required=""> Strongly Disagree
             <input type="radio" name="q6" ng-model="emp.q6" value="2"> Disagree
             <input type="radio" name="q6" ng-model="emp.q6" value="3"> Neutral
             <input type="radio" name="q6" ng-model="emp.q6" value="4"> Agree
@@ -164,7 +164,7 @@ display: none !important;
           <th>Name</th>
           <th>Employee Id</th>
           <th>Department</th>
-          <th>&nbsp;</th>
+          <!--<th>&nbsp;</th>-->
         </tr>
       </thead>
       <tbody>
