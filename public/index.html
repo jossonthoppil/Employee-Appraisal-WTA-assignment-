@@ -2,6 +2,7 @@
 <html ng-app="myApp">
 <head>
   <title>Employee Appraisal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/ngProgress.css">
 <link rel="stylesheet" href="css/toaster.css">
@@ -12,16 +13,20 @@ display: none !important;
 }
 </style>
 </head>
-<body ng-style="{'background-image':'url(background.jpg)'}" ng-cloak>
+<body ng-cloak>
   <header>
     <div class = "container special-padding">
       <div class="col-md-7 center-block">
-        <h1 class="center-block head">Employee Appraisal Form</h1>
+        <h1 class="center-block head"><strong>Employee Appraisal Form</strong></h1>
       </div>
     </div>
   </header>
+  
 
-  <div class="container bg main-form" style="background-color: #ffffff;" ng-controller="EmpCtrl">
+  <div class="container bg main-form" ng-controller="EmpCtrl">
+    <div class="text-center mob-header">
+    <h1><strong>Employee Appraisal Form</strong></h1><br><br>  
+    </div>
     <div class="text-center">
       <button class="btn btn-primary btn-header" ng-click="ShowFill()">Fill up form</button>
       <button class="btn btn-primary btn-header" ng-click="ShowResult()">View Form Replies</button>
@@ -38,7 +43,6 @@ display: none !important;
           <th>Name</th>
           <th>Employee Id</th>
           <th>Department</th>
-          <!--<th>&nbsp;</th>-->
         </tr>
       </thead>
       <tbody>
@@ -193,7 +197,8 @@ display: none !important;
       <textarea name="remarks" rows="6" class="remark" placeholder="Enter Remarks" ng-model="emp.remark"></textarea>
     </div><br>
     <div class = "text-center">
-    <button class="btn btn-primary" ng-click="add(emp)" ng-if="!emp._id" type="submit" ng-disabled="!Appraisal.$valid">Submit Form</button>
+    <p ng-show="add_error" class="alert alert-danger">Fill all necessary details</p>
+    <button class="btn btn-primary" ng-click="add(emp)" ng-if="!emp._id" type="submit">Submit Form</button>
             <div class="btn-group">
               <button class="btn btn-info" ng-click="update(emp)" ng-if="emp._id" type="submit">Update</button>
               <button class="btn" ng-click="deselect()" ng-if="emp._id">Clear</button>
@@ -205,6 +210,7 @@ display: none !important;
 
     <!--View Form Part-->
     <div ng-show='viewCtrl'>
+      <div id='exporthis'>
     <h2>Appraisal Form</h2><br>
     <h4>Employee Details</h4>
     <table class="table">
@@ -213,7 +219,6 @@ display: none !important;
           <th>Name</th>
           <th>Employee Id</th>
           <th>Department</th>
-          <!--<th>&nbsp;</th>-->
         </tr>
       </thead>
       <tbody>
@@ -261,7 +266,7 @@ display: none !important;
         <tr>
           <td>Consistency</td>
           <td>{{emp.q3}}/5</td>
-        </td>
+        </tr>
         <tr>
           <td>Communication</td>
           <td>{{emp.q4}}/5</td>
@@ -298,9 +303,17 @@ display: none !important;
       </tbody>
     </table>
     <br><h4>Additional Remarks</h4>
+    <div ng-if="!emp.remark">
+      <p>No Remarks to Show</p>
+    </div>
     <div>
       <p>{{emp.remark}}</p>
     </div><br>
+    </div>
+    <div class="text-center" style="padding-bottom: 70px;">
+      <button class="btn btn-primary" ng-click="export()">Download</button>
+      <button class="btn btn-primary" ng-click="edit(emp._id)">Edit</button>
+    </div>
     </div>
 
     <!--View All Results Part-->
@@ -345,7 +358,8 @@ display: none !important;
 <script src="js/ngProgress.min.js"></script>
 <script src="js/toaster.js"></script>
 <script src="app/app.js"></script>
-<script src="app/products.js"></script>
 <script src="app/employees.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 </body>
 </html>

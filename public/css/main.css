@@ -1,16 +1,27 @@
 .center-block { float:none !important; }
 .special-padding { padding:0 40px;}
 
-body { background:#fafafa; }
+body { background:url(background.jpg) no-repeat; background-size: cover; }
 
 header { background:#ffed46 center no-repeat; line-height: 76px; margin-bottom: 30px; background-size:12%; border-bottom:1px solid rgba(0,0,0,.0975); position:fixed; left:0; width:100%; top:0; z-index:99; }
 
-.main-form { padding-top:150px;}
+.main-form { padding-top:150px; background: #ffffff;}
 
 .head{padding-top: 20px; padding-bottom: 20px; text-align: center;}
 
 .preference{width: 50%;}
 
-.remark{width: 90%;}
+.remark{width: 100%;}
 
 .btn-header{width: 20%; height: 40px;}
+
+.mob-header{display: none;}
+
+@media(max-width: 768px){
+	header{display: none;}
+	.mob-header{display: block;width: 100%;}
+	.main-form {padding-top: 0px;}
+	.btn-header{height: 30px; width: 40%;}
+	.preference{width: 40%;}
+}
+
