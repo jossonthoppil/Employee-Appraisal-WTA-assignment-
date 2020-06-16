@@ -1,7 +1,7 @@
 {
-  "name": "ReST-API",
+  "name": "WTA Assignment",
   "version": "1.0.0",
-  "description": "A simple RESTFul API created using nodejs that talks to Mongodb database",
+  "description": "A single-page appraisal form with AngularJS",
   "main": "server.js",
   "author": "Aniruddh Sujish",
   "license": "ISC",
