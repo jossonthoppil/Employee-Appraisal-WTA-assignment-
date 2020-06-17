@@ -14,19 +14,12 @@ display: none !important;
 </style>
 </head>
 <body ng-cloak>
-  <header>
-    <div class = "container special-padding">
-      <div class="col-md-7 center-block">
-        <h1 class="center-block head"><strong>Employee Appraisal Form</strong></h1>
-      </div>
-    </div>
-  </header>
   
 
   <div class="container" ng-controller="EmpCtrl">
 
-    <div class="col-md-3 center-block main-form" style="text-align: center;" ng-show="!isValidated">
-      <div class=" w3l-login-form" style="display: inline-block;">
+    <div class="col-md-3 center-block main-form" style="text-align: center; background-color: grey;" ng-show="!isValidated" >
+      <div class=" w3l-login-form" style="display: inline-block;" >
         <h2>Manager Login</h2>
         <form name="loginForm">
             <div class=" w3l-form-group">
@@ -60,18 +53,17 @@ display: none !important;
 
 
     <div ng-show="isValidated" class="col-md-14 main-form" style="padding-left: 10px;padding-right: 10px;">
-    <div class="text-center mob-header">
-    <h1><strong>Employee Appraisal Form</strong></h1><br><br>  
-    </div>
+     <div class="container main-form" ng-controller="EmpCtrl">
+  <h1 class="center-block head">Employee Appraisal Form</h1>
     <div class="text-center">
-      <button class="btn btn-primary btn-header" ng-click="ShowFill()">Fill up form</button>
-      <button class="btn btn-primary btn-header" ng-click="ShowResult()">View Form Replies</button>
+      <button class="btn btn-primary btn-header" ng-click="ShowFill()">Employee Appraisal Form</button>
+      <button class="btn btn-primary btn-header" ng-click="ShowResult()">View Appraisals</button>
     </div>
     
     <!--Fill form Part-->
     <div ng-show='fillCtrl'>
-    <h2>Fill up Appraisal Form</h2><br>
-    <h4>Employee Details</h4>
+    <h2>Fill up the Appraisal Form</h2><br>
+    <center><h3 style="background-color: blue; color: white">Employee Details</h3></center>
     <form name="Appraisal" novalidate>
     <table class="table">
       <thead>
@@ -79,18 +71,19 @@ display: none !important;
           <th>Name</th>
           <th>Employee Id</th>
           <th>Department</th>
+          <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
         
         <tr>
-          <td><input class="form-control" ng-model="emp.name" required="" placeholder="Employee Name"></td>
-          <td><input class="form-control" ng-model="emp.emp_id" required="" placeholder="Employee Id"></td>
-          <td><input class="form-control" ng-model="emp.department" required="" placeholder="Department"></td>
+          <td><input class="form-control" ng-model="emp.name" required="true" placeholder="Enter the name of the employee"></td>
+          <td><input class="form-control" ng-model="emp.emp_id" placeholder="Enter the Id of the employee"></td>
+          <td><input class="form-control" ng-model="emp.department" placeholder="Enter the department of the employees"></td>
         </tr>
       </tbody>
     </table>
-    <br><h4>Manager Details</h4>
+    <center><h3 style="background-color: blue ; color: white">Manager Details</h3></center>
     <table class="table">
       <thead>
         <tr>
@@ -100,14 +93,14 @@ display: none !important;
       </thead>
       <tbody>
         <tr>
-          <td><input class="form-control" ng-model="emp.mname" required="" placeholder="Manager Name"></td>
-          <td><input class="form-control" ng-model="emp.man_id" required="" placeholder="Manager Id"></td>
+          <td><input class="form-control" ng-model="emp.mname" required="" placeholder=" Enter the Manager Name"></td>
+          <td><input class="form-control" ng-model="emp.man_id" placeholder="Enter the Manager Id"></td>
         </tr>
       </tbody>
     </table>
-    <br><h4>Performance Review</h4>
-    <p> Please indicate the degree to which you agree or disagree with the following statements about the Employee</p>
-    <table class="table">
+    <center><h3 style="background-color: blue; color: white">Performance Review</h3></center>
+    <p> Please rate the following attributes of the employee on the scale of 1-5</p>
+    <table class="table" style="background-color: grey">
       <thead>
         <tr>
           <th>Criteria</th>
@@ -116,125 +109,74 @@ display: none !important;
       </thead>
       <tbody>
         <tr>
-          <td>Works to Full Potential</td>
+          <td>Determination</td>
           <td class="preference">
-            <input type="radio" name="q1" ng-model="emp.q1" value="1" required=""> Poor
-            <input type="radio" name="q1" ng-model="emp.q1" value="2"> Unsatisfactory
-            <input type="radio" name="q1" ng-model="emp.q1" value="3"> Satisfactory
-            <input type="radio" name="q1" ng-model="emp.q1" value="4"> Good
-            <input type="radio" name="q1" ng-model="emp.q1" value="5"> Excellent
+            <input type="radio" name="q1" ng-model="emp.q1" value="1"> 1
+            <input type="radio" name="q1" ng-model="emp.q1" value="2"> 2
+            <input type="radio" name="q1" ng-model="emp.q1" value="3"> 3
+            <input type="radio" name="q1" ng-model="emp.q1" value="4"> 4
+            <input type="radio" name="q1" ng-model="emp.q1" value="5"> 5
           </td>
         </tr>
         <tr>   
-          <td>Quality of Work</td>
+          <td>Hardwork</td>
           <td class="preference">
-            <input type="radio" name="q2" ng-model="emp.q2" value="1" required=""> Poor
-            <input type="radio" name="q2" ng-model="emp.q2" value="2"> Unsatisfactory
-            <input type="radio" name="q2" ng-model="emp.q2" value="3"> Satisfactory
-            <input type="radio" name="q2" ng-model="emp.q2" value="4"> Good
-            <input type="radio" name="q2" ng-model="emp.q2" value="5"> Excellent
+            <input type="radio" name="q2" ng-model="emp.q2" value="1"> 1
+            <input type="radio" name="q2" ng-model="emp.q2" value="2"> 2
+            <input type="radio" name="q2" ng-model="emp.q2" value="3"> 3
+            <input type="radio" name="q2" ng-model="emp.q2" value="4"> 4
+            <input type="radio" name="q2" ng-model="emp.q2" value="5"> 5
           </td>
         </tr>
         <tr>
-          <td>Consistency</td>
+          <td>Work place ethics and behaviour</td>
           <td class="preference">
-            <input type="radio" name="q3" ng-model="emp.q3" value="1" required=""> Poor
-            <input type="radio" name="q3" ng-model="emp.q3" value="2"> Unsatisfactory
-            <input type="radio" name="q3" ng-model="emp.q3" value="3"> Satisfactory
-            <input type="radio" name="q3" ng-model="emp.q3" value="4"> Good
-            <input type="radio" name="q3" ng-model="emp.q3" value="5"> Excellent
+            <input type="radio" name="q3" ng-model="emp.q3" value="1"> 1
+            <input type="radio" name="q3" ng-model="emp.q3" value="2"> 2
+            <input type="radio" name="q3" ng-model="emp.q3" value="3"> 3
+            <input type="radio" name="q3" ng-model="emp.q3" value="4"> 4
+            <input type="radio" name="q3" ng-model="emp.q3" value="5"> 5
+          </td>
+        </td>
+        <tr>
+          <td>Team Work</td>
+          <td class="preference">
+            <input type="radio" name="q4" ng-model="emp.q4" value="1"> 1
+            <input type="radio" name="q4" ng-model="emp.q4" value="2"> 2
+            <input type="radio" name="q4" ng-model="emp.q4" value="3"> 3
+            <input type="radio" name="q4" ng-model="emp.q4" value="4"> 4
+            <input type="radio" name="q4" ng-model="emp.q4" value="5"> 5
           </td>
         </tr>
         <tr>
-          <td>Communication</td>
+          <td>Leadership</td>
           <td class="preference">
-            <input type="radio" name="q4" ng-model="emp.q4" value="1" required=""> Poor
-            <input type="radio" name="q4" ng-model="emp.q4" value="2"> Unsatisfactory
-            <input type="radio" name="q4" ng-model="emp.q4" value="3"> Satisfactory
-            <input type="radio" name="q4" ng-model="emp.q4" value="4"> Good
-            <input type="radio" name="q4" ng-model="emp.q4" value="5"> Excellent
-          </td>
-        </tr>
-        <tr>
-          <td>Handles multiple projects seamlessly</td>
-          <td class="preference">
-            <input type="radio" name="q5" ng-model="emp.q5" value="1" required=""> Poor
-            <input type="radio" name="q5" ng-model="emp.q5" value="2"> Unsatisfactory 
-            <input type="radio" name="q5" ng-model="emp.q5" value="3"> Satisfactory
-            <input type="radio" name="q5" ng-model="emp.q5" value="4"> Good
-            <input type="radio" name="q5" ng-model="emp.q5" value="5"> Excellent
+            <input type="radio" name="q5" ng-model="emp.q5" value="1"> 1
+            <input type="radio" name="q5" ng-model="emp.q5" value="2"> 2
+            <input type="radio" name="q5" ng-model="emp.q5" value="3"> 3
+            <input type="radio" name="q5" ng-model="emp.q5" value="4"> 4
+            <input type="radio" name="q5" ng-model="emp.q5" value="5"> 5
           </td>
 
         </tr>
         <tr>
-          <td>Group Work</td>
+          <td>Overall Perfomance</td>
           <td class="preference">
-            <input type="radio" name="q6" ng-model="emp.q6" value="1" required=""> Poor
-            <input type="radio" name="q6" ng-model="emp.q6" value="2"> Unsatisfactory
-            <input type="radio" name="q6" ng-model="emp.q6" value="3"> Satisfactory
-            <input type="radio" name="q6" ng-model="emp.q6" value="4"> Good
-            <input type="radio" name="q6" ng-model="emp.q6" value="5"> Excellent
+            <input type="radio" name="q6" ng-model="emp.q6" value="1"> 1
+            <input type="radio" name="q6" ng-model="emp.q6" value="2"> 2
+            <input type="radio" name="q6" ng-model="emp.q6" value="3"> 3
+            <input type="radio" name="q6" ng-model="emp.q6" value="4"> 4
+            <input type="radio" name="q6" ng-model="emp.q6" value="5"> 5
           </td>
-        </tr>
-        <tr>
-          <td>Productivity</td>
-          <td class="preference">
-            <input type="radio" name="q7" ng-model="emp.q7" value="1" required=""> Poor
-            <input type="radio" name="q7" ng-model="emp.q7" value="2"> Unsatisfactory
-            <input type="radio" name="q7" ng-model="emp.q7" value="3"> Satisfactory
-            <input type="radio" name="q7" ng-model="emp.q7" value="4"> Good
-            <input type="radio" name="q7" ng-model="emp.q7" value="5"> Excellent
-          </td>
-        </tr>
-        <tr>
-          <td>Integrity</td>
-          <td class="preference">
-            <input type="radio" name="q8" ng-model="emp.q8" value="1" required=""> Poor
-            <input type="radio" name="q8" ng-model="emp.q8" value="2"> Unsatisfactory
-            <input type="radio" name="q8" ng-model="emp.q8" value="3"> Satisfactory
-            <input type="radio" name="q8" ng-model="emp.q8" value="4"> Good
-            <input type="radio" name="q8" ng-model="emp.q8" value="5"> Excellent
-          </td>
-        </tr>
-        <tr>
-          <td>Punctuality</td>
-          <td class="preference">
-            <input type="radio" name="q9" ng-model="emp.q9" value="1" required=""> Poor
-            <input type="radio" name="q9" ng-model="emp.q9" value="2"> Unsatisfactory
-            <input type="radio" name="q9" ng-model="emp.q9" value="3"> Satisfactory
-            <input type="radio" name="q9" ng-model="emp.q9" value="4"> Good
-            <input type="radio" name="q9" ng-model="emp.q9" value="5"> Excellent
-          </td>
-        </tr>
-        <tr>
-          <td>Attendence</td>
-          <td class="preference">
-            <input type="radio" name="q10" ng-model="emp.q10" value="1" required=""> Poor
-            <input type="radio" name="q10" ng-model="emp.q10" value="2"> Unsatisfactory
-            <input type="radio" name="q10" ng-model="emp.q10" value="3"> Satisfactory
-            <input type="radio" name="q10" ng-model="emp.q10" value="4"> Good
-            <input type="radio" name="q10" ng-model="emp.q10" value="5"> Excellent
-          </td>
-        </tr>
-        <tr>
-          <td>Overall Rating</td>
-          <td class="preference">
-            <input type="radio" name="q11" ng-model="emp.q11" value="1" required=""> Poor
-            <input type="radio" name="q11" ng-model="emp.q11" value="2"> Unsatisfactory
-            <input type="radio" name="q11" ng-model="emp.q11" value="3"> Satisfactory
-            <input type="radio" name="q11" ng-model="emp.q11" value="4"> Good
-            <input type="radio" name="q11" ng-model="emp.q11" value="5"> Excellent
-          </td>
+
         </tr>
       </tbody>
-    </table>
-    <br><h4 style="padding-left: 20px;">Additional Remarks</h4>
+    </table><div>
+    <center><h3 align="text-center" style="color: white ; background-color: blue">Additional Remarks</h3></center>
     <div>
       <textarea name="remarks" rows="6" class="remark" placeholder="Enter Remarks" ng-model="emp.remark"></textarea>
     </div><br>
-    <div class = "text-center">
-    <p ng-show="add_error" class="alert alert-danger">Fill all necessary details</p>
-    <button class="btn btn-primary" ng-click="add(emp)" ng-if="!emp._id" type="submit">Submit Form</button>
+    <center><button class="btn btn-primary" ng-click="add(emp)" ng-if="!emp._id" type="submit" ng-disabled="!Appraisal.$valid">Submit Form</button></center>
             <div class="btn-group">
               <button class="btn btn-info" ng-click="update(emp)" ng-if="emp._id" type="submit">Update</button>
               <button class="btn" ng-click="deselect()" ng-if="emp._id">Clear</button>
@@ -246,15 +188,15 @@ display: none !important;
 
     <!--View Form Part-->
     <div ng-show='viewCtrl'>
-      <div id='exporthis'>
-    <h2>Appraisal Form</h2><br>
-    <h4>Employee Details</h4>
+    <center><h2>Appraisal Form</h2></center>
+    <center><h3 style="background-color: blue; color: white">Employee Details</h3></center>
     <table class="table">
       <thead>
         <tr>
           <th>Name</th>
           <th>Employee Id</th>
           <th>Department</th>
+          <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -266,7 +208,7 @@ display: none !important;
         </tr>
       </tbody>
     </table>
-    <br><h4>Manager Details</h4>
+    <center><h3 style="background-color: blue; color: white">Manager Details</h3></center>
     <table class="table">
       <thead>
         <tr>
@@ -281,8 +223,8 @@ display: none !important;
         </tr>
       </tbody>
     </table>
-    <br><h4>Performance Review</h4>
-    <table class="table">
+    <br><h3 style="background-color: blue; color: white">Performance Review</h3>
+    <table class="table" style="background-color: grey">
       <thead>
         <tr>
           <th>Criteria</th>
@@ -291,97 +233,73 @@ display: none !important;
       </thead>
       <tbody>
         <tr>
-          <td>Works to Full Potential</td>
+          <td>Determination</td>
           <td>{{emp.q1}}/5</td>
         </tr>
         <tr>   
-          <td>Quality of Work </td>
+          <td>Hardwork</td>
           <td>{{emp.q2}}/5</td>
           
         </tr>
         <tr>
-          <td>Consistency</td>
+          <td>Work place ethics and behaviour</td>
           <td>{{emp.q3}}/5</td>
-        </tr>
+        </td>
         <tr>
-          <td>Communication</td>
+          <td>Team Work</td>
           <td>{{emp.q4}}/5</td>
         </tr>
         <tr>
-          <td>Handles multiple projects seamlessly</td>
+          <td>Leadership</td>
           <td>{{emp.q5}}/5</td>
 
         </tr>
         <tr>
-          <td>Group Work</td>
+          <td>Overall Perfomance</td>
           <td>{{emp.q6}}/5</td>
-        </tr>
-        <tr>
-          <td>Productivity</td>
-          <td>{{emp.q7}}/5</td>
-        </tr>
-        <tr>
-          <td>Integrity</td>
-          <td>{{emp.q8}}/5</td>
-        </tr>
-        <tr>
-          <td>Punctuality</td>
-          <td>{{emp.q9}}/5</td>
-        </tr>
-        <tr>
-          <td>Attendence</td>
-          <td>{{emp.q10}}/5</td>
-        </tr>
-        <tr>
-          <td>Overall Rating</td>
-          <td>{{emp.q11}}/5</td>
         </tr>
       </tbody>
     </table>
-    <br><h4>Additional Remarks</h4>
-    <div ng-if="!emp.remark">
-      <p>   No Remarks to Show</p>
-    </div>
-    <div>
+    <br><h4 style="background-color: grey">Additional Remarks</h4>
+    <div style="background-color: grey">
       <p>{{emp.remark}}</p>
     </div><br>
-    </div>
-    <div class="text-center" style="padding-bottom: 70px;">
-      <button class="btn btn-primary" ng-click="export()">Download</button>
-      <button class="btn btn-primary" ng-click="edit(emp._id)">Edit</button>
-    </div>
     </div>
 
     <!--View All Results Part-->
     <div ng-show='resultCtrl'>
     <h2>View Results</h2>
-    <input class="form-control" type="text" ng-model="searchinput" placeholder="Search by Id">
-    <table class="table">
+    <div id="hello" style="background-color: grey">
+    <h4 ng-repeat="emp in emps">Employee name: {{emp.name}}<br>Employee ID:{{emp.emp_id}}<br>Department :{{emp.department}}<br>  <button class="btn btn-primary" ng-click="view(emp._id)" >View   </button>
+              <button class="btn btn-danger" ng-click="remove(emp)">Remove</button>
+              <button class="btn btn-warning" ng-click="edit(emp._id)">Edit</button><br><br></h4>
+    </div>
+    <table class="table" id="tbl" style="background-color: grey">
       <thead>
         <tr>
           <th>Name</th>
           <th>Employee Id</th>
           <th>Department</th>
-          <!--<th>&nbsp;</th>-->
+          <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="emp in emps | filter:{ emp_id: searchinput} | filter:{man_id: user.man_id}">
+        <tr ng-repeat="emp in emps">
           <td>{{emp.name}}</td>
           <td>{{emp.emp_id}}</td>
           <td>{{emp.department}}</td>
           <td>
-            <button class="btn btn-primary" ng-click="view(emp._id)" >View</button>
-            <div class="btn-group">
+            <button class="btn btn-primary" ng-click="view(emp._id)" >View   </button>
               <button class="btn btn-danger" ng-click="remove(emp)">Remove</button>
               <button class="btn btn-warning" ng-click="edit(emp._id)">Edit</button>
-            </div>
+              
+
           </td>
         </tr>
       </tbody>
-    </table><p ng-hide="emps.length" style="padding-left: 20px;">No Records to Show</p><br><br><br>
+    </table>
     </div>
-  </div>
+
   </div>
 
 <div data-loading></div>

@@ -1,11 +1,11 @@
 .center-block { float:none !important; }
 .special-padding { padding:0 40px;}
 
-body { background:url(background.jpg) no-repeat; background-size: cover; }
+body { background:url("https://cdn.hipwallpaper.com/i/96/32/FICOdT.jpg") no-repeat; background-size: cover; }
 
 header { background:#ADD8E6 center no-repeat; line-height: 76px; margin-bottom: 30px; background-size:12%; border-bottom:1px solid rgba(0,0,0,.0975); position:fixed; left:0; width:100%; top:0; z-index:99; }
 
-.main-form { padding-top:150px; background: #ffffff;}
+
 
 .head{padding-top: 20px; padding-bottom: 20px; text-align: center;}
 
@@ -17,6 +17,7 @@ header { background:#ADD8E6 center no-repeat; line-height: 76px; margin-bottom: 
 
 .mob-header{display: none;}
 
+#hello{display:none;}
 
 @media(max-width: 768px){
 	header{display: none;}
@@ -26,3 +27,19 @@ header { background:#ADD8E6 center no-repeat; line-height: 76px; margin-bottom: 
 	.preference{width: 40%;}
 }
 
+@media screen and (max-width: 500px){
+	header{display: none;}
+	.main-form {
+	}
+	.table{
+		display: none;
+	}
+	.hidden
+	{
+		display: block;
+	}
+	#hello
+	{
+		display: block;
+	}
+}

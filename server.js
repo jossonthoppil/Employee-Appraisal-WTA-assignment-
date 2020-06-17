@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 
 // MongoDB
 
-const dbUrl = 'mongodb://testuser:trial@freecluster-shard-00-00-k5dgb.mongodb.net:27017,freecluster-shard-00-01-k5dgb.mongodb.net:27017,freecluster-shard-00-02-k5dgb.mongodb.net:27017/assignment1?ssl=true&replicaSet=FreeCluster-shard-0&authSource=admin&retryWrites=true&w=majority'
+const dbUrl = 'mongodb://testuser:trial@freecluster-shard-00-00-k5dgb.mongodb.net:27017,freecluster-shard-00-01-k5dgb.mongodb.net:27017,freecluster-shard-00-02-k5dgb.mongodb.net:27017/assignment3?ssl=true&replicaSet=FreeCluster-shard-0&authSource=admin&retryWrites=true&w=majority'
 mongoose.connect(dbUrl)
 mongoose.connection.on('connected', () => {
   console.log('Mongoose is connected!!!');
