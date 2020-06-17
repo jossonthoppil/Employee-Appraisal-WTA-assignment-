@@ -17,6 +17,7 @@ header { background:#ADD8E6 center no-repeat; line-height: 76px; margin-bottom: 
 
 .mob-header{display: none;}
 
+
 @media(max-width: 768px){
 	header{display: none;}
 	.mob-header{display: block;width: 100%;}

@@ -23,7 +23,43 @@ display: none !important;
   </header>
   
 
-  <div class="container bg main-form" ng-controller="EmpCtrl">
+  <div class="container" ng-controller="EmpCtrl">
+
+    <div class="col-md-3 center-block main-form" style="text-align: center;" ng-show="!isValidated">
+      <div class=" w3l-login-form" style="display: inline-block;">
+        <h2>Manager Login</h2>
+        <form name="loginForm">
+            <div class=" w3l-form-group">
+                <label>Manager Id:</label>
+                <div class="group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" class="form-control " name="manager_id" placeholder="Manager Id" ng-model = "user.man_id" required="required" />
+                </div>
+            </div>
+            <div class=" w3l-form-group">
+                <label>Manager Name:</label>
+                <div class="group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" class="form-control " name="manager_name" placeholder="Manager Name" ng-model="user.name" required="required" />
+                </div>
+            </div>
+            <div class=" w3l-form-group">
+                <label>Password:</label>
+                <div class="group">
+                    <i class="fas fa-unlock"></i>
+                    <input type="password" class="form-control" name="pwd" placeholder="Password" ng-model="user.pwd" required="required" />
+                </div>
+            </div><br>
+            <button type="submit" name="login-submit" ng-show="login" ng-click="Validate()">Login</button>
+            <button type="submit" name="login-submit" ng-show="!login" ng-click="AddUser()">SignUp</button>
+        </form>
+        <p class=" w3l-register-p" ng-show="login">Don't have an account?<a href="#" class="register"  ng-click="signup()"> Sign up</a></p>
+        <p class=" w3l-register-p" ng-show="!login">Already have an account?<a href="#" class="register"  ng-click="log()">Login</a></p>
+    </div>
+    </div>
+
+
+    <div ng-show="isValidated" class="col-md-14 main-form" style="padding-left: 10px;padding-right: 10px;">
     <div class="text-center mob-header">
     <h1><strong>Employee Appraisal Form</strong></h1><br><br>  
     </div>
@@ -105,10 +141,10 @@ display: none !important;
             <input type="radio" name="q3" ng-model="emp.q3" value="1" required=""> Poor
             <input type="radio" name="q3" ng-model="emp.q3" value="2"> Unsatisfactory
             <input type="radio" name="q3" ng-model="emp.q3" value="3"> Satisfactory
-            <input type="radio" name="q3" ng-model="emp.q3" value="4"> Agree
+            <input type="radio" name="q3" ng-model="emp.q3" value="4"> Good
             <input type="radio" name="q3" ng-model="emp.q3" value="5"> Excellent
           </td>
-        </td>
+        </tr>
         <tr>
           <td>Communication</td>
           <td class="preference">
@@ -192,7 +228,7 @@ display: none !important;
         </tr>
       </tbody>
     </table>
-    <br><h4>Additional Remarks</h4>
+    <br><h4 style="padding-left: 20px;">Additional Remarks</h4>
     <div>
       <textarea name="remarks" rows="6" class="remark" placeholder="Enter Remarks" ng-model="emp.remark"></textarea>
     </div><br>
@@ -304,7 +340,7 @@ display: none !important;
     </table>
     <br><h4>Additional Remarks</h4>
     <div ng-if="!emp.remark">
-      <p>No Remarks to Show</p>
+      <p>   No Remarks to Show</p>
     </div>
     <div>
       <p>{{emp.remark}}</p>
@@ -330,7 +366,7 @@ display: none !important;
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="emp in emps | filter:{ emp_id: searchinput}">
+        <tr ng-repeat="emp in emps | filter:{ emp_id: searchinput} | filter:{man_id: user.man_id}">
           <td>{{emp.name}}</td>
           <td>{{emp.emp_id}}</td>
           <td>{{emp.department}}</td>
@@ -343,9 +379,9 @@ display: none !important;
           </td>
         </tr>
       </tbody>
-    </table><p ng-hide="emps.length">No Records to Show</p><br><br><br>
+    </table><p ng-hide="emps.length" style="padding-left: 20px;">No Records to Show</p><br><br><br>
     </div>
-
+  </div>
   </div>
 
 <div data-loading></div>

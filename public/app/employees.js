@@ -1,16 +1,21 @@
-app.controller('EmpCtrl', function($scope, Emp, ngProgress, toaster) {
+app.controller('EmpCtrl', function($scope, Emp,User,ngProgress, toaster) {
 
 $scope.emp = new Emp();
+//$scope.user = new User();
 $scope.resultCtrl = false;
 $scope.fillCtrl = true;
 $scope.add_error = false;
+//$scope.login = true;
+$scope.user = new User();
+$scope.login = true;
+$scope.isValidated=false;
 
 
 var refresh = function() {
   $scope.emps = Emp.query(); 
   $scope.emp ="";
 }
-refresh();
+
 
 $scope.add = function(emp) {
   if($scope.Appraisal.$valid){
@@ -83,4 +88,68 @@ $scope.export = function(){
             }
   });
 }
+
+/*$scope.log = function(){
+  $scope.login=true;
+}
+
+$scope.signup = function(){
+  $scope.login=false;
+}
+
+
+
+$scope.Validate = function(id){
+  users.forEach(function(usr){
+    if(usr.man_id === $scope.user.man_id){
+      if(usr.pwd === $scope.user.pwd){
+        console.log('success');
+      }
+    }
+  })
+}
+
+$scope.AddUser = function(){
+  User.save(user,function(user){
+      console.log('Created Successfully');
+      refresh();
+    });
+}*/
+$scope.log = function(){
+      $scope.login=true;
+  }
+
+  $scope.signup = function(){
+      $scope.login=false;
+  }
+  var refreshlogin = function() {
+      $scope.users = User.query(); 
+      $scope.user ="";
+  }
+  refreshlogin();
+
+
+$scope.Validate = function(){
+  console.log($scope.users);
+  $scope.temp = $scope.users = $scope.users.filter(function(usr){
+    return (usr.man_id == $scope.user.man_id && usr.pwd== $scope.user.pwd)
+  })
+  console.log($scope.temp);
+  if($scope.temp.length != 0){
+    console.log('success');
+    $scope.isValidated=true;
+    refresh();
+  }else{
+    $scope.user=""
+  }
+  
+}
+
+$scope.AddUser = function(){
+  User.save($scope.user,function(user){
+      $scope.login=true;
+      refreshlogin();
+    });
+}
+
 })
